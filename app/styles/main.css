@@ -28,23 +28,6 @@ body {
   padding-bottom: 19px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-}
-
 .topicgallery img {
   height: 90px;
 }
@@ -72,5 +55,15 @@ body {
 }
 
 .holder {
-  margin-left:350px;
+  margin-left:320px;
+}
+
+.tuthub-logo {
+  margin-left: 250px;
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 0;
+  white-space: nowrap;
 }

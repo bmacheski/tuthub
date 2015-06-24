@@ -16,14 +16,19 @@ angular
         controller: 'TopicsCtrl',
         controllerAs: 'main'
       })
-      .when('/topics/:id',{
+      .when('/topics/:id', {
         templateUrl: 'views/tutorials.html',
         controller: 'TutorialCtrl',
         controllerAs: 'main'
       })
-      .when('/topics/:id/new',{
+      .when('/topics/:id/new', {
         templateUrl: 'views/newtutorial.html',
         controller: 'TutorialCtrl',
+        controllerAs: 'main'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
         controllerAs: 'main'
       })
       .otherwise({

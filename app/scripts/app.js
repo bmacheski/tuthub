@@ -1,16 +1,45 @@
 'use strict';
 
 angular
-  .module('tuthubApp', [
+  .module('tutHubApp', [
     'ngRoute'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '',
-        controller: ''
+        templateUrl: 'views/home.html',
+        controller: '',
+        controllerAs: ''
+      })
+      .when('/topics/new', {
+        templateUrl: 'views/newtopic.html',
+        controller: 'TopicsCtrl',
+        controllerAs: 'main'
+      })
+      .when('/topics/:id',{
+        templateUrl: 'views/tutorials.html',
+        controller: 'TutorialCtrl',
+        controllerAs: 'main'
+      })
+      .when('/topics/:id/new',{
+        templateUrl: 'views/newtutorial.html',
+        controller: 'TutorialCtrl',
+        controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .constant('FB_URL', 'https://tut-hub.firebaseio.com')
+  .filter('objectToArr', function (){
+    return function (obj){
+      if (obj){
+        return Object
+          .keys(obj)
+          .map(function (key){
+            obj[key]._id = key;
+            return obj[key];
+          });
+      }
+    };
   });

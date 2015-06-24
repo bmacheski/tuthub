@@ -44,3 +44,33 @@ body {
     margin-bottom: 30px;
   }
 }
+
+.topicgallery img {
+  height: 90px;
+}
+
+.topicgallery .topic {
+  width: 150px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding-bottom: 15px;
+  text-align: center;
+  display:inline-block;
+  margin: 5px;
+  outline: 0;
+}
+
+.lang-avatar {
+  border-radius: none;
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.holder {
+  margin-left:350px;
+}

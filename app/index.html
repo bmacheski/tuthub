@@ -25,9 +25,12 @@
       <div class="nav-wrapper blue">
         <a ng-href="#/" class="tuthub-logo">TutHub</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#/login">Login</a></li>
-          <li><a href="">Logout</a></li>
-          <li><a href="#/register">Register</a></li>
+          <li ng-show="auth"><a ng-href="#">Bookmarks</a></li>
+          <li ng-show="auth"><a ng-href="#/profile">Profile</a></li>
+          <li ng-show="auth"><a ng-href="#/topics/new">Create topic</a></li>
+          <li ng-hide="auth"><a ng-href="#/login">Login</a></li>
+          <li ng-show="auth"><a ng-href="#/logout">Logout</a></li>
+          <li ng-hide="auth"><a href="#/register">Register</a></li>
       </div>
     </nav>
 
@@ -46,11 +49,13 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/materialize/bin/materialize.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/topics.js"></script>
         <script src="scripts/controllers/tutorials.js"></script>
         <script src="scripts/factories/topic.factory.js"></script>

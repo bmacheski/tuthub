@@ -29,7 +29,7 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'main'
+        controllerAs: 'auth'
       })
       .otherwise({
         redirectTo: '/'

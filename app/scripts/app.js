@@ -2,7 +2,7 @@
 
 angular
   .module('tutHubApp', [
-    'ngRoute'
+    'ngRoute', 'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -28,7 +28,12 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
+        controller: 'AuthCtrl',
+        controllerAs: 'auth'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'AuthCtrl',
         controllerAs: 'auth'
       })
       .otherwise({

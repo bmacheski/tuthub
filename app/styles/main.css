@@ -67,3 +67,8 @@ body {
   padding: 0;
   white-space: nowrap;
 }
+
+.add-tut-button {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}

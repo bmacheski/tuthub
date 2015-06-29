@@ -1,0 +1,12 @@
+<nav>
+  <div class="nav-wrapper blue">
+    <a ng-href="#/" class="tuthub-logo">TutHub</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li ng-show="auth"><a ng-href="#">Bookmarks</a></li>
+      <li ng-show="auth"><a ng-href="#/profile">Profile</a></li>
+      <li ng-show="auth"><a ng-href="#/topics/new">Create topic</a></li>
+      <li ng-hide="auth"><a ng-href="#/login">Login</a></li>
+      <li ng-show="auth"><a ng-click="main.logout()" onclick="Materialize.toast('You have successfully logged out.', 3000)">Logout</a></li>
+      <li ng-hide="auth"><a href="#/register">Register</a></li>
+  </div>
+</nav>

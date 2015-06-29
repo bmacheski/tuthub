@@ -20,24 +20,13 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- application content -->
-    <nav>
-      <div class="nav-wrapper blue">
-        <a ng-href="#/" class="tuthub-logo">TutHub</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li ng-show="auth"><a ng-href="#">Bookmarks</a></li>
-          <li ng-show="auth"><a ng-href="#/profile">Profile</a></li>
-          <li ng-show="auth"><a ng-href="#/topics/new">Create topic</a></li>
-          <li ng-hide="auth"><a ng-href="#/login">Login</a></li>
-          <li ng-show="auth"><a ng-href="#/logout">Logout</a></li>
-          <li ng-hide="auth"><a href="#/register">Register</a></li>
-      </div>
-    </nav>
+    <!-- primary navigation -->
+    <section ng-include="src='views/navbar.html'" ng-controller="NavbarCtrl as main"></section>
 
-    <!-- side navigation -->
+    <!-- left navigation -->
     <section ng-include="src='views/topics.html'" ng-controller="TopicsCtrl as main"></section>
 
-    <!-- main content view -->
+    <!-- content view -->
     <div class="container holder">
     <div ng-view=""></div>
     </div>
@@ -57,6 +46,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/auth.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/topics.js"></script>
         <script src="scripts/controllers/tutorials.js"></script>
 

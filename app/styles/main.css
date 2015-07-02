@@ -72,3 +72,15 @@ body {
   margin-top: 15px !important;
   margin-bottom: 15px !important;
 }
+
+.home-title {
+  text-align: center;
+  top: 40%;
+  position: absolute;
+  left: 50%;
+  opacity: .5;
+}
+
+.mdi-github-circle {
+  margin-right: 5px;
+}

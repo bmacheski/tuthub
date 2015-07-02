@@ -4,21 +4,15 @@ angular
 	.module('tutHubApp')
 	.controller('AuthCtrl', function ($rootScope, $location, Auth){
 		var vm = this;
+		Auth.$onAuth(function (auth){
+			$rootScope.auth = auth;
+		});
 		vm.login = function (){
-			Auth.$authWithPassword(vm.user)
-			.then(function (auth){
+			Auth.$authWithOAuthPopup("github")
+			.then(function (){
 				$location.path('#/');
-				$rootScope.auth = auth;
 			}).catch(function(err){
 				console.log('Login failed.', err)
 			})
 		};
-		vm.register = function (){
-			Auth.$createUser(vm.user)
-			.then(function (){
-				vm.login();
-			}).catch(function(err){
-				console.log('Registration failed.', err)
-			})
-		}
 	})

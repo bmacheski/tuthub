@@ -1,4 +1,14 @@
 <ul id="slide-out" class="side-nav fixed collection">
+	<nav>
+		<div class="nav-wrapper blue">
+			<form>
+				<div class="input-field">
+					<input id="search" type="search" ng-model="name">
+					<label for="search"><i class="mdi mdi-magnify"></i></label>
+				</div>
+			</form>
+		</div>
+	</nav>
     <li class="collection-item avatar" ng-repeat="(id, topic) in main.topics | objectToArr | orderBy: 'name'"><a href="#/topics/{{topic._id}}">{{topic.name}}
     	<img ng-src="{{topic.url}}" alt="" class="lang-avatar">
     	</a>

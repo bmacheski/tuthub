@@ -2,19 +2,17 @@
 
 angular
 	.module('tutHubApp')
-	.factory('Topic', function ($http, $location, FB_URL){
+	.factory('Topic', function ($location, $firebaseArray, FB_URL){
+		var ref = new Firebase(FB_URL+ '/topics');
+		var topics = $firebaseArray(ref);
+
 		return {
-			create (data){
-				$http
-					.post(FB_URL + '/topics.json', data)
-					.success(function (){
-						$location.path('/');
-					});
-			},
-			getAll (cb){
-				$http
-					.get(FB_URL + '/topics.json')
-					.success(cb);
+			all: topics,
+			create: function (topic){
+				topics.$add(topic)
+				.then(function (){
+					$location.path('/');
+				});
 			}
 		};
 	});

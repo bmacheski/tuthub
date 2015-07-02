@@ -9,11 +9,11 @@
 		</tr>
 	</thead>
 	<tr class="tutorial" ng-repeat="(id, tutorial) in main.tutorials">
-		<td><a><i class="material-icons">thumb_up</i></a><a><i class="material-icons">thumb_down</i></a></td>
-		<td><h6>{{tutorial.title}}</h6><a ng-href="">Comments</a></td>
+		<td><a></a></td>
+		<td><h6>{{tutorial.title}}</h6><a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a></td>
 		<td>{{tutorial.type}}</td>
-		<td><a target="_blank" ng-href="{{tutorial.URL}}" class="material-icons">open_in_new</a></td>
-		<td><a class="btn-floating add-button" ng-show="auth"><i class="material-icons">add</i></a></td>
+		<td><a target="_blank" ng-href="{{tutorial.URL}}"></a></td>
+		<td><a class="btn-floating add-button" ng-show="auth"><i class="mdi mdi-plus" ng-click="main.bookmarkTut(id)">add</i></a></td>
 	</tr>
 </table>
 <a ng-show="auth" type="button" class="btn btn-default add-tut-button" ng-click="main.go()">Add a tutorial</a>

@@ -1,0 +1,14 @@
+<table class="bookmark table bordered">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Source</th>
+			<th>URL</th>
+		</tr>
+	</thead>
+	<tr class="bookmark" ng-repeat="(id, bookmark) in main.bookmarks">
+		<td><h6>{{bookmark.title}}</h6></td>
+		<td>{{bookmark.source}}</td>
+		<td><a target="_blank" ng-href="{{bookmark.url}}">Link</a></td>
+	</tr>
+</table>

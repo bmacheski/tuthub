@@ -16,12 +16,12 @@ angular
         controller: 'TopicsCtrl',
         controllerAs: 'main'
       })
-      .when('/topics/:id', {
+      .when('/topics/:topicid', {
         templateUrl: 'views/tutorials.html',
         controller: 'TutorialCtrl',
         controllerAs: 'main'
       })
-      .when('/topics/:id/new', {
+      .when('/topics/:topicid/new', {
         templateUrl: 'views/newtutorial.html',
         controller: 'TutorialCtrl',
         controllerAs: 'main'
@@ -31,10 +31,10 @@ angular
         controller: 'AuthCtrl',
         controllerAs: 'auth'
       })
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'AuthCtrl',
-        controllerAs: 'auth'
+      .when('/bookmarks', {
+        templateUrl: 'views/bookmarks.html',
+        controller: 'BookmarkCtrl',
+        controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'

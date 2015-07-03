@@ -2,7 +2,9 @@
 
 angular
 	.module('tutHubApp')
-	.controller('NavbarCtrl', function ($rootScope, $location, Auth){
+	.controller('NavbarCtrl', NavbarCtrl)
+
+	function NavbarCtrl($rootScope, $location, Auth) {
 		var vm = this;
 
 		vm.logout = function (){
@@ -10,4 +12,4 @@ angular
 			$rootScope.auth = null;
 			$location.path('/login');
 		}
-	})
+	}

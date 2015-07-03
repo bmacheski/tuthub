@@ -2,7 +2,9 @@
 
 angular
 	.module('tutHubApp')
-	.controller('TutorialCtrl', function ($routeParams, $location, $firebaseArray, $rootScope, FB_URL){
+	.controller('TutorialCtrl', TutorialCtrl)
+
+	function TutorialCtrl($routeParams, $location, $firebaseArray, $rootScope, FB_URL) {
 		var vm = this;
 		vm.topicid = $routeParams.topicid;
 		vm.tutid = $routeParams.tutid;
@@ -15,16 +17,21 @@ angular
 		var bmark = $firebaseArray(bmarkref);
 
 		vm.saveTut = function (){
-			tuts.$add(vm.tutorial)
-			.then(function (){
-				console.log('tutorial added.')
-				$location.path('/topics/' + vm.topicid)
+			tuts.$add({
+				URL: vm.tutorial.URL,
+				title: vm.tutorial.title,
+				type: vm.tutorial.type,
+				count: 0
 			})
-		}
-		vm.bookmarkTut = function (){
-			bmark.$add({title : vm.tutorials[id].title, url : vm.tutorials[id].URL, source : vm.tutorials[id].type})
-		}
+			.then(function (){
+				console.log('tutorial added.');
+				$location.path('/topics/' + vm.topicid);
+			});
+		};
+		vm.bookmarkTut = function (id){
+			bmark.$add({title : vm.tutorials[id].title, url : vm.tutorials[id].URL, source : vm.tutorials[id].type});
+		};
 		vm.go = function (){
-			$location.path('/topics/' + vm.topicid + '/new')
-		}
-	});
+			$location.path('/topics/' + vm.topicid + '/new');
+		};
+	};

@@ -2,7 +2,9 @@
 
 angular
 	.module('tutHubApp')
-	.controller('AuthCtrl', function ($rootScope, $location, Auth){
+	.controller('AuthCtrl', AuthCtrl)
+
+	function AuthCtrl($rootScope, $location, Auth) {
 		var vm = this;
 
 		Auth.$onAuth(function (auth){
@@ -10,11 +12,11 @@ angular
 		});
 
 		vm.login = function (){
-			Auth.$authWithOAuthPopup("github")
+			Auth.$authWithOAuthPopup('github')
 			.then(function (){
 				$location.path('#/');
 			}).catch(function(err){
 				console.log('Login failed.', err)
 			})
 		};
-	})
+	}

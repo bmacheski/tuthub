@@ -4,7 +4,10 @@ angular
   .module('tutHubApp', [
     'ngRoute', 'firebase'
   ])
-  .config(function ($routeProvider) {
+  .constant('FB_URL', 'https://tut-hub.firebaseio.com')
+  .config(config)
+
+  function config($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
@@ -39,6 +42,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .constant('FB_URL', 'https://tut-hub.firebaseio.com')
-
+  }

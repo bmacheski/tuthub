@@ -2,4 +2,6 @@
 
 angular
 	.module('tutHubApp')
-	.factory('Tutorial', function (){});
+	.factory('Tutorial', Tutorial)
+
+	function Tutorial() {};

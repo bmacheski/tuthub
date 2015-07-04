@@ -1,0 +1,12 @@
+<form>
+	<div class="form-group">
+		<label class="control-label">Topic</label>
+		<input class="form-control" type="text" ng-model="main.topic.name"></input>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Topic Image Source URL</label>
+		<input class="form-control" type="url" ng-model="main.topic.url"></input>
+	</div>
+	<button class="btn btn-primary" ng-click="main.saveTopic()">Submit</button>
+	<button class="btn btn-danger" ng-click="">Cancel</button>
+</form>

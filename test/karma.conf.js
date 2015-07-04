@@ -24,7 +24,6 @@ module.exports = function(config) {
       // bower:js
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/materialize/bin/materialize.js',
       'bower_components/firebase/firebase.js',

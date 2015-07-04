@@ -1,7 +1,7 @@
 <table class="tutlist table bordered">
 	<thead>
 		<tr>
-			<th>Vote</th>
+			<th></th>
 			<th>Title</th>
 			<th>Source</th>
 			<th>URL</th>
@@ -9,11 +9,23 @@
 		</tr>
 	</thead>
 	<tr class="tutorial" ng-repeat="(id, tutorial) in main.tutorials">
-		<td><a></a></td>
-		<td><h6>{{tutorial.title}}</h6><a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a></td>
+		<td class="count-row">
+			<a class="mdi mdi-arrow-up-bold" ng-click="main.incrementVote(tutorial.$id)"></a>
+			<br>
+			<p class="tut-count">{{tutorial.count}}</p>
+			<a class="mdi mdi-arrow-down-bold" ng-click="decrementVote(tutorial.$id)"></a>
+		</td>
+		<td>
+			<h6>{{tutorial.title}}</h6>
+			<a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
+		</td>
 		<td>{{tutorial.type}}</td>
 		<td><a target="_blank" ng-href="{{tutorial.URL}}">Link</a></td>
-		<td><a class="btn-floating add-button" ng-show="auth"><i class="mdi mdi-plus" ng-click="main.bookmarkTut(id)">add</i></a></td>
+		<td>
+			<a class="btn-floating add-button" ng-show="auth">
+				<i class="mdi mdi-plus" ng-click="main.bookmarkTut(id)">add</i>
+			</a>
+		</td>
 	</tr>
 </table>
 <a ng-show="auth" type="button" class="btn btn-default add-tut-button" ng-click="main.go()">Add a tutorial</a>

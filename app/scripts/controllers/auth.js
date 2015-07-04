@@ -2,7 +2,7 @@
 
 angular
 	.module('tutHubApp')
-	.controller('AuthCtrl', AuthCtrl)
+	.controller('AuthCtrl', AuthCtrl);
 
 	function AuthCtrl($rootScope, $location, Auth) {
 		var vm = this;
@@ -16,7 +16,7 @@ angular
 			.then(function (){
 				$location.path('#/');
 			}).catch(function(err){
-				console.log('Login failed.', err)
-			})
+				console.log('Login failed.', err);
+			});
 		};
 	}

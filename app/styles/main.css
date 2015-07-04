@@ -84,3 +84,7 @@ body {
 .mdi-github-circle {
   margin-right: 5px;
 }
+
+.count-row {
+  text-align: center;
+}

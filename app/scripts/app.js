@@ -29,6 +29,11 @@ angular
         controller: 'TutorialCtrl',
         controllerAs: 'main'
       })
+      .when('/topics/:topicid/:tutid/comments', {
+        templateUrl: 'views/comments.html',
+        controller: 'CommentsCtrl',
+        controllerAs: 'comment'
+      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'AuthCtrl',

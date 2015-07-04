@@ -1,0 +1,36 @@
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Title</th>
+			<th>Source</th>
+			<th>URL</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tr>
+		<td></td>
+		<td>{{comment.commentView.title}}</td>
+		<td>{{comment.commentView.type}}</td>
+		<td><a ng-href="{{comment.commentView.URL}}">Link</a></td>
+	</tr>
+</table>
+<h5>Comments</h5>
+<ul class="collection">
+	<li class="collection-item avatar" ng-repeat="(id, comment) in comment.comments">
+		<img ng-src="{{comment.commenterAv}}" class="circle">
+		<p>{{comment.message}}</p>
+		<span>Posted by: </span>{{comment.commentername}}
+	</li>
+</ul>
+<div class="row">
+	<form class="col s12">
+		<div class="row">
+			<div ng-show="auth" class="input-field col s12">
+				<textarea id="textarea" class="materialize-textarea" ng-model="comment.comment"></textarea>
+				<label for="textarea">Comment</label>
+			</div>
+		</div>
+		<a ng-show="auth" class="waves-effect waves-light btn" ng-click="comment.addComment()">Post comment</a>
+	</form>
+</div>

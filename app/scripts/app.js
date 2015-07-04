@@ -32,7 +32,7 @@ angular
       .when('/topics/:topicid/:tutid/comments', {
         templateUrl: 'views/comments.html',
         controller: 'CommentsCtrl',
-        controllerAs: 'comment'
+        controllerAs: 'comm'
       })
       .when('/login', {
         templateUrl: 'views/login.html',

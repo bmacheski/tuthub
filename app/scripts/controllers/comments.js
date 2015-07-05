@@ -23,6 +23,9 @@ angular
 				commentername : $rootScope.auth.github.username,
 				commenterAv : $rootScope.auth.github.cachedUserProfile.avatar_url
 			})
+			.then(function() {
+				vm.comment = '';
+			})
 		}
 		vm.removeComment = function(id) {
 			comments.$remove(id)

@@ -6,6 +6,7 @@ angular
 
 	function TutorialCtrl($routeParams, $location, $firebaseArray, $firebaseObject, $rootScope, FB_URL) {
 		var vm = this;
+		var ghusername = $rootScope.auth.github.username;
 		vm.topicid = $routeParams.topicid;
 		vm.tutid = $routeParams.tutid;
 
@@ -13,7 +14,7 @@ angular
 		var tuts = $firebaseArray(tutref);
 		vm.tutorials = tuts;
 
-		var bmarkref = new Firebase(FB_URL + '/users/' + $rootScope.auth.github.username + '/bookmarks');
+		var bmarkref = new Firebase(FB_URL + '/users/' + ghusername + '/bookmarks');
 		var bmark = $firebaseArray(bmarkref);
 
 		vm.saveTut = function() {
@@ -21,7 +22,8 @@ angular
 				URL: vm.tutorial.URL,
 				title: vm.tutorial.title,
 				type: vm.tutorial.type,
-				count: 0
+				count: 0,
+				creator: ghusername
 			})
 			.then(function (){
 				console.log('tutorial added.');
@@ -29,11 +31,14 @@ angular
 			});
 		};
 
-		vm.bookmarkTut = function(id) {
+		vm.bookmarkTut = function(id, tid) {
+			Materialize.toast('Added to bookmarks!', 2000);
 			bmark.$add({
 				title : vm.tutorials[id].title,
 				url : vm.tutorials[id].URL,
-				source : vm.tutorials[id].type});
+				source : vm.tutorials[id].type,
+				commentsrc: '#/topics/' + vm.topicid + '/' + tid + '/comments'
+			});
 		};
 
 		vm.go = function() {

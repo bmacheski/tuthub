@@ -5,7 +5,7 @@
 				<th></th>
 				<th>Title</th>
 				<th>Source</th>
-				<th>URL</th>
+				<th></th>
 				<th></th>
 			</tr>
 		</thead>
@@ -17,15 +17,16 @@
 				<a class="mdi mdi-arrow-down-bold" ng-click="decrementVote(tutorial.$id)"></a>
 			</td>
 			<td>
-				<h6>{{tutorial.title}}</h6>
-				<a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
+				<a target="_blank" ng-href="{{tutorial.URL}}">
+					<h6>{{tutorial.title}}</h6>
+				</a>
 			</td>
 			<td>{{tutorial.type}}</td>
-			<td><a target="_blank" ng-href="{{tutorial.URL}}">Link</a></td>
 			<td>
-				<a class="btn-floating add-button" ng-show="auth">
-					<i class="mdi mdi-plus" ng-click="main.bookmarkTut(id)">add</i>
-				</a>
+				<a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
+			</td>
+			<td>
+				<a class="mdi mdi-bookmark-outline pointer" ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)"></a>
 			</td>
 		</tr>
 	</table>

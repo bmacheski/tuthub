@@ -5,14 +5,20 @@
 			<tr>
 				<th>Title</th>
 				<th>Source</th>
-				<th>URL</th>
+				<th></th>
 				<th></th>
 			</tr>
 		</thead>
 		<tr class="bookmark" ng-repeat="(id, bookmark) in main.bookmarks">
-			<td><h6>{{bookmark.title}}</h6></td>
+			<td>
+				<a target="_blank" ng-href="{{bookmark.url}}">
+					<h6>{{bookmark.title}}</h6>
+				</a>
+			</td>
 			<td>{{bookmark.source}}</td>
-			<td><a target="_blank" ng-href="{{bookmark.url}}">Link</a></td>
+			<td>
+				<a ng-href="{{bookmark.commentsrc}}">Comments</a>
+			</td>
 			<td>
 				<a ng-click="main.removeBookmark(id)">
 					<i class="mdi mdi-window-close"></i>

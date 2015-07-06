@@ -25,9 +25,9 @@ angular
 			})
 			.then(function() {
 				vm.comment = '';
-			})
-		}
+			});
+		};
 		vm.removeComment = function(id) {
-			comments.$remove(id)
-		}
+			comments.$remove(id);
+		};
 	}

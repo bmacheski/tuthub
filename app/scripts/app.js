@@ -5,7 +5,7 @@ angular
     'ngRoute', 'firebase'
   ])
   .constant('FB_URL', 'https://tut-hub.firebaseio.com')
-  .config(config)
+  .config(config);
 
   function config($routeProvider) {
     $routeProvider

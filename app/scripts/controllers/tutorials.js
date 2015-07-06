@@ -17,6 +17,10 @@ angular
 		var bmarkref = new Firebase(FB_URL + '/users/' + ghusername + '/bookmarks');
 		var bmark = $firebaseArray(bmarkref);
 
+		var bmarkrefkey = new Firebase(FB_URL + '/users/' + ghusername + '/keys');
+		var bmarkobjkey = $firebaseObject(bmarkrefkey);
+		vm.bkeys = bmarkobjkey;
+
 		vm.saveTut = function() {
 			tuts.$add({
 				URL: vm.tutorial.URL,
@@ -26,7 +30,6 @@ angular
 				creator: ghusername
 			})
 			.then(function (){
-				console.log('tutorial added.');
 				$location.path('/topics/' + vm.topicid);
 			});
 		};
@@ -34,10 +37,15 @@ angular
 		vm.bookmarkTut = function(id, tid) {
 			Materialize.toast('Added to bookmarks!', 2000);
 			bmark.$add({
-				title : vm.tutorials[id].title,
-				url : vm.tutorials[id].URL,
+				title: vm.tutorials[id].title,
+				url: vm.tutorials[id].URL,
 				source : vm.tutorials[id].type,
+				key: tid,
 				commentsrc: '#/topics/' + vm.topicid + '/' + tid + '/comments'
+			})
+			.then(function() {
+				bmarkobjkey[tid] = tid;
+				bmarkobjkey.$save();
 			});
 		};
 

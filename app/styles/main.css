@@ -92,3 +92,17 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.mdi {
+  font-size: 24px;
+}
+
+.count-column {
+  text-align: center;
+  width: 70px;
+}
+
+.bk-src {
+  width: 200px;
+}
+

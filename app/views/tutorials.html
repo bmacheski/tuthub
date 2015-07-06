@@ -1,5 +1,5 @@
 <ul class="collection">
-	<table class="tutlist table bordered">
+	<table class="tutlist table bordered centered">
 		<thead>
 			<tr>
 				<th></th>
@@ -10,7 +10,7 @@
 			</tr>
 		</thead>
 		<tr class="tutorial" ng-repeat="(id, tutorial) in main.tutorials  | orderBy:'-count'">
-			<td class="count-row">
+			<td class="count-column">
 				<a class="mdi mdi-arrow-up-bold" ng-click="main.incrementVote(tutorial.$id)"></a>
 				<br>
 				<p class="tut-count">{{tutorial.count}}</p>
@@ -26,7 +26,7 @@
 				<a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
 			</td>
 			<td>
-				<a class="mdi mdi-bookmark-outline pointer" ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)"></a>
+				<a ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)" ng-class="{ 'mdi mdi-bookmark-outline pointer' : tutorial.$id !== main.bkeys[tutorial.$id], 'mdi mdi-bookmark pointer' : tutorial.$id === main.bkeys[tutorial.$id] }"></a>
 			</td>
 		</tr>
 	</table>

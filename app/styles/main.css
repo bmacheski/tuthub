@@ -55,7 +55,7 @@ body {
 }
 
 .holder {
-  margin-left:320px;
+  margin-left:300px;
 }
 
 .tuthub-logo {
@@ -104,5 +104,9 @@ body {
 
 .bk-src {
   width: 200px;
+}
+
+.bookmark-td {
+  width: 60px;
 }
 

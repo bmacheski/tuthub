@@ -14,7 +14,7 @@
 				<a class="mdi mdi-arrow-up-bold" ng-click="main.incrementVote(tutorial.$id)"></a>
 				<br>
 				<p class="tut-count">{{tutorial.count}}</p>
-				<a class="mdi mdi-arrow-down-bold" ng-click="decrementVote(tutorial.$id)"></a>
+				<a class="mdi mdi-arrow-down-bold" ng-click="main.decrementVote(tutorial.$id)"></a>
 			</td>
 			<td>
 				<a target="_blank" ng-href="{{tutorial.URL}}">
@@ -25,8 +25,8 @@
 			<td>
 				<a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
 			</td>
-			<td>
-				<a ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)" ng-class="{ 'mdi mdi-bookmark-outline pointer' : tutorial.$id !== main.bkeys[tutorial.$id], 'mdi mdi-bookmark pointer' : tutorial.$id === main.bkeys[tutorial.$id] }"></a>
+			<td class="bookmark-td">
+				<a ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)" ng-class="{ 'mdi mdi-bookmark-outline pointer' : tutorial.$id !== main.bkeys[tutorial.$id], 'mdi mdi-bookmark-check pointer' : tutorial.$id === main.bkeys[tutorial.$id] }"></a>
 			</td>
 		</tr>
 	</table>

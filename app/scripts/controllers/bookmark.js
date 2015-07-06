@@ -11,17 +11,15 @@ angular
 		var bmark = $firebaseArray(bmarkref);
 		vm.bookmarks = bmark;
 
-		var bmarkrefkey = new Firebase(FB_URL + '/users/' + ghusername + '/keys');
-		var bmarkobjkey = $firebaseObject(bmarkrefkey);
-		vm.bmarkkeys = bmarkobjkey;
-
 		vm.removeBookmark = function(id, bkey) {
-			bmark.$remove(id);
-			bmarkobjkey.$remove(bkey);
-			bmarkobjkey.$save();
-			bmark.$remove(id)
+		var bmarkrefkey = new Firebase(FB_URL + '/users/' + ghusername + '/keys/' + bkey);
+		var bmarkobjkey = $firebaseObject(bmarkrefkey);
+		bmarkobjkey.$loaded()
 			.then(function() {
-				console.log('bookmark removed.');
+				bmark.$remove(id);
+				bmarkobjkey.$remove(bkey);
+				bmarkobjkey.$save();
+				bmark.$remove(id)
 			});
-		};
+		}
 	}

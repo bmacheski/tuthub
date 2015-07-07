@@ -110,3 +110,19 @@ body {
   width: 60px;
 }
 
+.del-button-td a {
+  visibility: hidden;
+  font-size:18px;
+}
+
+.del-button-td:hover a {
+  visibility: visible;
+  position: relative;
+  bottom: 55px;
+  left:8px;
+  color: black;
+}
+
+ .del-x {
+  width: 40px;
+ }

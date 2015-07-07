@@ -6,7 +6,7 @@ angular
 
 	function TutorialCtrl($routeParams, $location, $firebaseArray, $firebaseObject, $rootScope, FB_URL) {
 		var vm = this;
-		var ghusername = $rootScope.auth.github.username;
+		vm.ghusername = $rootScope.auth.github.username;
 		vm.topicid = $routeParams.topicid;
 		vm.tutid = $routeParams.tutid;
 
@@ -14,10 +14,10 @@ angular
 		var tuts = $firebaseArray(tutref);
 		vm.tutorials = tuts;
 
-		var bmarkref = new Firebase(FB_URL + '/users/' + ghusername + '/bookmarks');
+		var bmarkref = new Firebase(FB_URL + '/users/' + vm.ghusername + '/bookmarks');
 		var bmark = $firebaseArray(bmarkref);
 
-		var bmarkrefkey = new Firebase(FB_URL + '/users/' + ghusername + '/keys');
+		var bmarkrefkey = new Firebase(FB_URL + '/users/' + vm.ghusername + '/keys');
 		var bmarkobjkey = $firebaseObject(bmarkrefkey);
 		vm.bkeys = bmarkobjkey;
 
@@ -27,7 +27,7 @@ angular
 				title: vm.tutorial.title,
 				type: vm.tutorial.type,
 				count: 0,
-				creator: ghusername
+				creator: vm.ghusername
 			})
 			.then(function (){
 				$location.path('/topics/' + vm.topicid);
@@ -52,6 +52,15 @@ angular
 		vm.go = function() {
 			$location.path('/topics/' + vm.topicid + '/new');
 		};
+
+		vm.deleteTut = function(id) {
+			var delref = new Firebase(FB_URL + '/topics/' + vm.topicid + '/tutorials/' + id);
+			var delarr = $firebaseObject(delref);
+			delarr.$loaded()
+			.then(function(){
+				delarr.$remove(id)
+			})
+		}
 
 		vm.incrementVote = function(id) {
 			var newtutref = new Firebase(FB_URL + '/topics/' + vm.topicid + '/tutorials/' + id);

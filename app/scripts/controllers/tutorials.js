@@ -39,7 +39,7 @@ angular
 			bmark.$add({
 				title: vm.tutorials[id].title,
 				url: vm.tutorials[id].URL,
-				source : vm.tutorials[id].type,
+				source: vm.tutorials[id].type,
 				key: tid,
 				commentsrc: '#/topics/' + vm.topicid + '/' + tid + '/comments'
 			})
@@ -54,17 +54,16 @@ angular
 		};
 
 		vm.deleteTut = function(id) {
-			var delref = new Firebase(FB_URL + '/topics/' + vm.topicid + '/tutorials/' + id);
-			var delarr = $firebaseObject(delref);
+			Materialize.toast('Tutorial deleted.', 1000);
+			var delarr = $firebaseObject(tutref.child(id));
 			delarr.$loaded()
 			.then(function(){
-				delarr.$remove(id)
-			})
-		}
+				delarr.$remove(id);
+			});
+		};
 
 		vm.incrementVote = function(id) {
-			var newtutref = new Firebase(FB_URL + '/topics/' + vm.topicid + '/tutorials/' + id);
-			var newref = $firebaseObject(newtutref);
+			var newref = $firebaseObject(tutref.child(id));
 			newref.$loaded()
 			.then(function() {
 				newref.count++;
@@ -73,8 +72,7 @@ angular
 		};
 
 		vm.decrementVote = function(id) {
-			var newtutref = new Firebase(FB_URL + '/topics/' + vm.topicid + '/tutorials/' + id);
-			var newref = $firebaseObject(newtutref);
+			var newref = $firebaseObject(tutref.child(id));
 			newref.$loaded()
 			.then(function() {
 				newref.count--;

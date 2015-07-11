@@ -11,6 +11,7 @@ angular
 			$rootScope.auth = auth;
 		});
 
+		// authenticate with GitHub
 		vm.login = function (){
 			Auth.$authWithOAuthPopup('github')
 			.then(function (){

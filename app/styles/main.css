@@ -126,3 +126,7 @@ body {
  .del-x {
   width: 40px;
  }
+
+ td {
+  font-size: 16px;
+ }

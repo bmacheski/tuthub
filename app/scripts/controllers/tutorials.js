@@ -14,11 +14,10 @@ angular
 		var tuts = $firebaseArray(tutref);
 		vm.tutorials = tuts;
 
-		var bmarkref = new Firebase(FB_URL + '/users/' + vm.ghusername + '/bookmarks');
-		var bmark = $firebaseArray(bmarkref);
+		var userref = new Firebase(FB_URL + '/users/' + vm.ghusername);
+		var bmarkarr = $firebaseArray(userref.child('bookmarks'));
 
-		var bmarkrefkey = new Firebase(FB_URL + '/users/' + vm.ghusername + '/keys');
-		var bmarkobjkey = $firebaseObject(bmarkrefkey);
+		var bmarkobjkey = $firebaseObject(userref.child('keys'));
 		vm.bkeys = bmarkobjkey;
 
 		vm.saveTut = function() {
@@ -64,19 +63,41 @@ angular
 
 		vm.incrementVote = function(id) {
 			var newref = $firebaseObject(tutref.child(id));
+			var voteref = $firebaseObject(userref.child(id));
 			newref.$loaded()
 			.then(function() {
-				newref.count++;
-				newref.$save();
+				if(!voteref.hasOwnProperty('downvoted') && !voteref.hasOwnProperty('upvoted')){
+					voteref['upvoted'] = 'upvoted';
+					voteref.$save();
+					newref.count++;
+					newref.$save();
+				}
+				if(voteref.hasOwnProperty('downvoted')){
+					voteref.$remove(voteref['downvoted']);
+					voteref.$save();
+					newref.count++;
+					newref.$save();
+				}
 			});
 		};
 
 		vm.decrementVote = function(id) {
 			var newref = $firebaseObject(tutref.child(id));
+			var voteref = $firebaseObject(userref.child(id));
 			newref.$loaded()
 			.then(function() {
-				newref.count--;
-				newref.$save();
+				if(!voteref.hasOwnProperty('upvoted') && !voteref.hasOwnProperty('downvoted')){
+					voteref['downvoted'] = 'downvoted';
+					voteref.$save();
+					newref.count--;
+					newref.$save();
+				}
+				if(voteref.hasOwnProperty('upvoted')){
+					voteref.$remove(voteref['upvoted']);
+					voteref.$save();
+					newref.count--;
+					newref.$save();
+				}
 			});
 		};
 	}

@@ -1,18 +1,17 @@
 <ul id="slide-out" class="side-nav fixed collection">
-	<nav>
-		<div class="nav-wrapper blue">
-			<form>
-				<div class="input-field">
-					<input id="search" type="search" ng-model="name">
-					<label for="search"><i class="mdi mdi-magnify"></i></label>
-				</div>
-			</form>
-		</div>
-	</nav>
+  <nav>
+    <div class="nav-wrapper blue">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" ng-model="name">
+          <label for="search"><i class="mdi mdi-magnify"></i></label>
+        </div>
+      </form>
+    </div>
+  </nav>
     <li class="collection-item avatar" ng-repeat="(id, topic) in main.topics | orderBy: 'name' | filter:name"><a href="#/topics/{{topic.$id}}">{{topic.name}}
-    	<img ng-src="{{topic.url}}" alt="" class="lang-avatar">
-    	</a>
+      <img ng-src="{{topic.url}}" alt="" class="lang-avatar">
+      </a>
     </li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-

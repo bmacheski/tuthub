@@ -1,41 +1,41 @@
 <ul class="collection">
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Title</th>
-				<th>Source</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tr>
-			<td></td>
-			<td><a target="_blank" ng-href="{{comm.commentView.URL}}">{{comm.commentView.title}}</a></td>
-			<td>{{comm.commentView.type}}</td>
-			<td></a></td>
-		</tr>
-	</table>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Source</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr>
+      <td></td>
+      <td><a target="_blank" ng-href="{{comm.commentView.URL}}">{{comm.commentView.title}}</a></td>
+      <td>{{comm.commentView.type}}</td>
+      <td></a></td>
+    </tr>
+  </table>
 </ul>
 
 <h5>Comments</h5>
 <ul class="collection">
-	<li class="collection-item avatar" ng-repeat="(id, comment) in comm.comments">
-		<img ng-src="{{comment.commenterAv}}" class="circle">
-		<p>{{comment.message}}</p>
-		<em><span>Posted by: </span>{{comment.commentername}}</em>
-		<br>
-		<a ng-show="auth.github.username === comment.commentername" class="secondary-content" ng-click="comm.removeComment(id)">Remove</a>
-	</li>
+  <li class="collection-item avatar" ng-repeat="(id, comment) in comm.comments">
+    <img ng-src="{{comment.commenterAv}}" class="circle">
+    <p>{{comment.message}}</p>
+    <em><span>Posted by: </span>{{comment.commentername}}</em>
+    <br>
+    <a ng-show="auth.github.username === comment.commentername" class="secondary-content" ng-click="comm.removeComment(id)">Remove</a>
+  </li>
 </ul>
 <div class="row">
-	<form class="col s12">
-		<div class="row">
-			<div ng-show="auth" class="input-field col s12">
-				<textarea id="textarea" class="materialize-textarea" ng-model="comm.comment"></textarea>
-				<label for="textarea">Comment</label>
-			</div>
-		</div>
-		<a ng-show="auth" class="waves-effect waves-light btn" ng-click="comm.addComment()">Post comment</a>
-	</form>
+  <form class="col s12">
+    <div class="row">
+      <div ng-show="auth" class="input-field col s12">
+        <textarea id="textarea" class="materialize-textarea" ng-model="comm.comment"></textarea>
+        <label for="textarea">Comment</label>
+      </div>
+    </div>
+    <a ng-show="auth" class="waves-effect waves-light btn" ng-click="comm.addComment()">Post comment</a>
+  </form>
 </div>

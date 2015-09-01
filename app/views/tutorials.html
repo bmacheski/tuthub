@@ -1,36 +1,36 @@
 <ul class="collection">
-	<table class="tutlist table bordered centered">
-		<thead>
-			<tr>
-				<th></th>
-				<th>Title</th>
-				<th>Source</th>
-				<th></th>
-				<th></th>
-				<th class="del-x"></th>
-			</tr>
-		</thead>
-		<tr class="tutorial" ng-repeat="(id, tutorial) in main.tutorials  | orderBy:'-count'">
-			<td class="count-column">
-				<a class="mdi mdi-arrow-up-bold" ng-click="main.incrementVote(tutorial.$id)"></a>
-				<br>
-				<p class="tut-count">{{tutorial.count}}</p>
-				<a class="mdi mdi-arrow-down-bold" ng-click="main.decrementVote(tutorial.$id)"></a>
-			</td>
-			<td>
-				<a target="_blank" ng-href="{{tutorial.URL}}">{{tutorial.title}}</a>
-			</td>
-			<td>{{tutorial.type}}</td>
-			<td>
-				<a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
-			</td>
-			<td class="bookmark-td">
-				<a ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)" ng-class="{ 'mdi mdi-bookmark-outline pointer' : tutorial.$id !== main.bkeys[tutorial.$id], 'mdi mdi-bookmark-check pointer' : tutorial.$id === main.bkeys[tutorial.$id] }"></a>
-			</td>
-			<td class="del-button-td">
-				<a ng-show="main.ghusername === tutorial.creator" ng-click="main.deleteTut(tutorial.$id)" class="mdi mdi-window-close pointer"></a>
-			</td>
-		</tr>
-	</table>
+  <table class="tutlist table bordered centered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Source</th>
+        <th></th>
+        <th></th>
+        <th class="del-x"></th>
+      </tr>
+    </thead>
+    <tr class="tutorial" ng-repeat="(id, tutorial) in main.tutorials  | orderBy:'-count'">
+      <td class="count-column">
+        <a class="mdi mdi-arrow-up-bold" ng-click="main.incrementVote(tutorial.$id)"></a>
+        <br>
+        <p class="tut-count">{{tutorial.count}}</p>
+        <a class="mdi mdi-arrow-down-bold" ng-click="main.decrementVote(tutorial.$id)"></a>
+      </td>
+      <td>
+        <a target="_blank" ng-href="{{tutorial.URL}}">{{tutorial.title}}</a>
+      </td>
+      <td>{{tutorial.type}}</td>
+      <td>
+        <a ng-href="#/topics/{{main.topicid}}/{{tutorial.$id}}/comments">Comments</a>
+      </td>
+      <td class="bookmark-td">
+        <a ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)" ng-class="{ 'mdi mdi-bookmark-outline pointer' : tutorial.$id !== main.bkeys[tutorial.$id], 'mdi mdi-bookmark-check pointer' : tutorial.$id === main.bkeys[tutorial.$id] }"></a>
+      </td>
+      <td class="del-button-td">
+        <a ng-show="main.ghusername === tutorial.creator" ng-click="main.deleteTut(tutorial.$id)" class="mdi mdi-window-close pointer"></a>
+      </td>
+    </tr>
+  </table>
 </ul>
 <a ng-show="auth" type="button" class="btn btn-default add-tut-button" ng-click="main.go()">Add a tutorial</a>

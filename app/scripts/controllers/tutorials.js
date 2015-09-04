@@ -35,7 +35,7 @@ angular
 
     vm.bookmarkTut = function(id, tid) {
       Materialize.toast('Added to bookmarks!', 1000);
-      bmark.$add({
+      bmarkarr.$add({
         title: vm.tutorials[id].title,
         url: vm.tutorials[id].URL,
         source: vm.tutorials[id].type,

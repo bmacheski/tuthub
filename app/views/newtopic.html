@@ -1,12 +1,14 @@
-<form>
+<form name="topicform" novalidate>
   <div class="form-group">
     <label class="control-label">Topic</label>
-    <input class="form-control" type="text" ng-model="main.topic.name"></input>
+    <input class="form-control" type="text" name="title" ng-model="main.topic.name" required></input>
+    <span ng-show="topicform.title.$touched && topicform.title.$invalid">A title is required.</span>
   </div>
   <div class="form-group">
     <label class="control-label">Topic Image Source URL</label>
-    <input class="form-control" type="url" ng-model="main.topic.url"></input>
+    <input class="form-control" type="url" name="url" ng-model="main.topic.url" required></input>
+    <span ng-show="topicform.url.$touched && topicform.url.$invalid">A valid URL is required.</span>
   </div>
-  <button class="btn btn-primary" ng-click="main.saveTopic()">Submit</button>
-  <button class="btn btn-danger" ng-click="">Cancel</button>
+  <button class="btn btn-primary" ng-click="main.saveTopic()" ng-disabled="topicform.$invalid">Submit</button>
+  <button class="btn btn-danger" ng-click="main.goback()">Cancel</button>
 </form>

@@ -2,7 +2,8 @@
 
 angular
   .module('tutHubApp', [
-    'ngRoute', 'firebase'
+    'ngRoute',
+    'firebase'
   ])
   .constant('FB_URL', 'https://tut-hub.firebaseio.com')
   .config(config);

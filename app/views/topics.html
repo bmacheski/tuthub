@@ -9,8 +9,10 @@
       </form>
     </div>
   </nav>
-    <li class="collection-item avatar" ng-repeat="(id, topic) in main.topics | orderBy: 'name' | filter:name"><a href="#/topics/{{topic.$id}}">{{topic.name}}
-      <img ng-src="{{topic.url}}" alt="" class="lang-avatar">
+    <li class="collection-item avatar" ng-repeat="(id, topic) in main.topics | orderBy: 'name' | filter:name">
+      <a href="#/topics/{{topic.$id}}">
+        {{topic.name}}
+        <img ng-src="{{topic.url}}" alt="" class="lang-avatar">
       </a>
     </li>
 </ul>

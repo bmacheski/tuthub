@@ -1,23 +1,26 @@
 <div class="row">
-  <form class="col s12">
+  <form class="col s12" name="tutform" novalidate>
     <div class="row">
       <div class="input-field col s12">
-        <input id="title" type="text" class="validate" ng-model="main.tutorial.title">
+        <input name="title" type="text" ng-model="main.tutorial.title" required>
         <label for="title">Title</label>
+        <span ng-show="tutform.title.$touched && tutform.title.$invalid">A title is required.</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="type" type="text" class="validate" ng-model="main.tutorial.type">
+        <input name="type" type="text" ng-model="main.tutorial.type" required>
         <label for="type">Type</label>
+        <span ng-show="tutform.type.$touched && tutform.type.$invalid">A type is required.</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="url" type="url" class="validate" ng-model="main.tutorial.URL">
+        <input name="url" type="url" ng-model="main.tutorial.URL" required>
         <label for="url">URL</label>
+        <span ng-show="tutform.url.$touched && tutform.url.$invalid">A url is required.</span>
       </div>
     </div>
   </form>
-  <button class="btn btn-primary" ng-click="main.saveTut()">Submit</button
+  <button ng-disabled="tutform.$invalid" class="btn btn-primary" ng-click="main.saveTut()">Submit</button
 </div>

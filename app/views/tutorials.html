@@ -28,7 +28,7 @@
         <a ng-show="auth" ng-click="main.bookmarkTut(id, tutorial.$id)" ng-class="{ 'mdi mdi-bookmark-outline pointer' : tutorial.$id !== main.bkeys[tutorial.$id], 'mdi mdi-bookmark-check pointer' : tutorial.$id === main.bkeys[tutorial.$id] }"></a>
       </td>
       <td class="del-button-td">
-        <a ng-show="main.ghusername === tutorial.creator" ng-click="main.deleteTut(tutorial.$id)" class="mdi mdi-window-close pointer"></a>
+        <a ng-show="auth.github.username === tutorial.creator" ng-click="main.deleteTut(tutorial.$id)" class="mdi mdi-window-close pointer"></a>
       </td>
     </tr>
   </table>

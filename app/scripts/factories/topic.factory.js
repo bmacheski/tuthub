@@ -5,7 +5,7 @@ angular
   .factory('Topic', Topic)
 
   function Topic($location, $firebaseArray, FB_URL){
-    var ref = new Firebase(FB_URL+ '/topics');
+    var ref = new Firebase(FB_URL + '/topics');
     var topics = $firebaseArray(ref);
 
     return {

@@ -6,7 +6,10 @@ angular
 
   function TutorialCtrl($routeParams, $location, $firebaseArray, $firebaseObject, $rootScope, FB_URL) {
     var vm = this;
-    vm.ghusername = $rootScope.auth.github.username;
+    var bmarkarr;
+    var bmarkobjkey;
+    var userref;
+    var ghusername;
     vm.topicid = $routeParams.topicid;
     vm.tutid = $routeParams.tutid;
 
@@ -14,11 +17,15 @@ angular
     var tuts = $firebaseArray(tutref);
     vm.tutorials = tuts;
 
-    var userref = new Firebase(FB_URL + '/users/' + vm.ghusername);
-    var bmarkarr = $firebaseArray(userref.child('bookmarks'));
-
-    var bmarkobjkey = $firebaseObject(userref.child('keys'));
-    vm.bkeys = bmarkobjkey;
+    function setUser() {
+      if ($rootScope.auth !== undefined) {
+        ghusername = $rootScope.auth.github.username;
+        userref = new Firebase(FB_URL + '/users/' + ghusername);
+        bmarkobjkey = $firebaseObject(userref.child('keys'));
+        vm.bkeys = bmarkobjkey;
+        bmarkarr = $firebaseArray(userref.child('bookmarks'));
+      }
+    }
 
     vm.saveTut = function() {
       tuts.$add({
@@ -26,7 +33,7 @@ angular
         title: vm.tutorial.title,
         type: vm.tutorial.type,
         count: 0,
-        creator: vm.ghusername
+        creator: ghusername
       })
       .then(function (){
         $location.path('/topics/' + vm.topicid);
@@ -34,6 +41,7 @@ angular
     };
 
     vm.bookmarkTut = function(id, tid) {
+      setUser();
       Materialize.toast('Added to bookmarks!', 1000);
       bmarkarr.$add({
         title: vm.tutorials[id].title,
@@ -62,6 +70,7 @@ angular
     };
 
     vm.incrementVote = function(id) {
+      var userref = new Firebase(FB_URL + '/users/' + ghusername);
       var newref = $firebaseObject(tutref.child(id));
       var voteref = $firebaseObject(userref.child(id));
       newref.$loaded()
@@ -82,6 +91,7 @@ angular
     };
 
     vm.decrementVote = function(id) {
+      var userref = new Firebase(FB_URL + '/users/' + ghusername);
       var newref = $firebaseObject(tutref.child(id));
       var voteref = $firebaseObject(userref.child(id));
       newref.$loaded()
@@ -100,4 +110,5 @@ angular
         }
       });
     };
+    setUser();
   }
